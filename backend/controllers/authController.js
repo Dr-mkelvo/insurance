@@ -3,15 +3,14 @@ const User = require('../models/User')
 const bcrypt = require('bcrypt')
 const jwt = require("jsonwebtoken")
 
-//registion
+//registration
 authController.post('/register', async (req, res) => {
     try {
       const isExisting = await User.findOne({ email: req.body.email })
-  
       if (isExisting) {
         throw new Error("The email is already registered")
     }
-    
+
     const hashedPassword = await bcrypt.hash(req.body.password, 10)
 
     const newUser = await User.create({ ...req.body, password: hashedPassword })

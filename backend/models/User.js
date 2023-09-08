@@ -23,3 +23,5 @@ const UserSchema = new mongoose.Schema({
 }, {timestamps: true}) //show when it was created /updated
 
 module.exports = mongoose.model("User", UserSchema)
+
+
